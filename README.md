@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# **React - 爱彼迎订房网**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 项目介绍
 
-## Available Scripts
+**项目核心学习、掌握的知识点：**
 
-In the project directory, you can run:
+- 技术栈：React18, React Router, ReduxToolKit(RTK), axios, AntDesign, Material
 
-### `npm start`
+  UI, styled-components, Jenkins, Nginx
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 对于第一个React项目，我的核心是对前面所学知识进行练习、实战；
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 掌握React开发的流程、模式、项目架构，项目中会有很多组件、工具等封装、抽取、复用思想；
 
-### `npm test`
+- 最重要的是学习React开发的模式和编程的思想
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## **项目规范**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**项目规范：项目中有一些开发规范和代码风格**
 
-### `npm run eject`
+1. 文件夹、文件名称统一小写、多个单词以连接符（-）连接；
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. JavaScript变量名称采用小驼峰标识，常量全部使用大写字母，组件采用大驼峰；
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. CSS采用普通CSS和styled-component结合来编写（全局采用普通CSS、局部采用styled-component）;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. 整个项目不再使用class组件，统一使用函数式组件，并且全面拥抱Hooks；
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. 组件内部的状态，使用useState、useReducer；业务数据全部放在redux中管理；
 
-## Learn More
+7. 函数组件内部基本按照如下顺序编写代码：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 组件内部state管理；
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- redux的hooks代码；
 
-### Code Splitting
+- 其他hooks相关代码（比如自定义hooks）；
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 其他逻辑代码；
+- 返回JSX代码；
 
-### Analyzing the Bundle Size
+8. redux代码规范如下：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- 每个模块有自己独立的reducer或者slice，之后合并在一起；
+- redux中会存在共享的状态、从服务器获取到的数据状态；
 
-### Making a Progressive Web App
+9. 网络请求采用axios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- 对axios进行二次封装；
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 所有的模块请求会放到一个请求文件中单独管理；
