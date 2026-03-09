@@ -10,7 +10,7 @@ import '@/assets/css/index.less';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Suspense fallback={<div>Loading...</div>}>
       <HashRouter>
         <Provider store={store}>
@@ -18,6 +18,6 @@ root.render(
         </Provider>
       </HashRouter>
     </Suspense>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
