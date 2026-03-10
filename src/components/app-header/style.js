@@ -6,5 +6,4 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     height: 80px;
     border-bottom: 1px solid #eee;
-    
 `

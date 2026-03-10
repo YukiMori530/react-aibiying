@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const RightWrapper = styled.div`
     flex: 1;
     display: flex;
@@ -9,7 +7,7 @@ export const RightWrapper = styled.div`
     align-items: center;
 
     color: ${props=>props.theme.text.primaryColor};
-    font-size: 14px;
+    
     font-weight: 600;
 
     .btns {
