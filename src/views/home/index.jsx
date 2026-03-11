@@ -1,12 +1,12 @@
-
-
+import HomeBanner from "./c-cpns/home-banner";
+import { HomeWrapper } from "./style";
 
 
 const Home = () => {
     return (
-        <div>
-            <h2>Home Page</h2>
-        </div>
+        <HomeWrapper>
+            <HomeBanner/>
+        </HomeWrapper>
     );
 };
 
