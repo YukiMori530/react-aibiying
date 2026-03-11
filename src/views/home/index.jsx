@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
+import SectionHeader from "@/components/section-header";
 
 const Home = () => {
     /**从redux中获取数据 */
@@ -20,11 +21,15 @@ const Home = () => {
         dispatch(fetchHomeDataAction())
     },[dispatch])
 
+
+    console.log(goodPriceInfo)
+
     return (
         <HomeWrapper>
             <HomeBanner/>
             <div className="content">
-                <h2>{goodPriceInfo.title}</h2>
+                <div className="good-price">
+                <SectionHeader title={goodPriceInfo.title}/>
                 <ul>
                     {
                         goodPriceInfo.list.map(item => {
@@ -32,6 +37,7 @@ const Home = () => {
                         })
                     }
                 </ul>
+                </div>
             </div>
         </HomeWrapper>
     );
