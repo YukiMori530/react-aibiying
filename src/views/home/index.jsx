@@ -6,6 +6,7 @@ import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import SectionHeader from "@/components/section-header";
+import RoomItem from "@/components/room-item";
 
 const Home = () => {
     /**从redux中获取数据 */
@@ -30,10 +31,10 @@ const Home = () => {
             <div className="content">
                 <div className="good-price">
                 <SectionHeader title={goodPriceInfo.title}/>
-                <ul>
+                <ul className="room-list">
                     {
-                        goodPriceInfo.list.map(item => {
-                            return <li key={item.id}>{item.name}</li>
+                        goodPriceInfo.list?.slice(0,8)?.map(item => {
+                            return <RoomItem itemData={item} key={item.id}/>
                         })
                     }
                 </ul>
