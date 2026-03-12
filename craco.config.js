@@ -11,11 +11,13 @@ module.exports = {
       '@': resolve('src'),
       'utils': resolve('src/utils'),
       'components': resolve('src/components'),
+      // '@mui/styled-engine': '@mui/styled-engine-sc'
     },
   },
   // 配置less
   plugins: [
     {
-      plugin: CracoLessPlugin
-    },]
+      plugin: CracoLessPlugin,
+    },
+  ]
 };
