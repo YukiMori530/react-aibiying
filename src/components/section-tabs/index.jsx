@@ -6,11 +6,12 @@ import classNames from "classnames";
 
 const SectionTabs = (props)=>{
 
-    const { tabsNames = [] } = props
+    const { tabsNames = [], tabClick } = props
     const [currentIndex, setCurrentIndex] = useState(0)
 
-    function itemClickHandle(index){
-        setCurrentIndex(index)
+    function itemClickHandle(index,item){
+        setCurrentIndex(index)  
+        tabClick(index,item)
     }
 
     return (
@@ -21,7 +22,7 @@ const SectionTabs = (props)=>{
                         <div 
                         key={index}
                         className={classNames("item",{active: currentIndex === index})}
-                        onClick={e=>itemClickHandle(index)}
+                        onClick={e=>itemClickHandle(index,item)}
                         >
                             {item}
                         </div>
@@ -33,7 +34,8 @@ const SectionTabs = (props)=>{
 }
 
 SectionTabs.propTypes = {
-    tabsNames: PropTypes.array
+    tabsNames: PropTypes.array,
+    tabClick: PropTypes.func
 }
 
 export default SectionTabs

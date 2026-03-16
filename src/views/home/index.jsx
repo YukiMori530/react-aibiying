@@ -1,5 +1,5 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useCallback, useState } from "react";
 // import { ConfigProvider,Button } from 'antd';
 
 
@@ -16,6 +16,9 @@ import SectionTabs from "@/components/section-tabs";
 // };
 
 const Home = () => {
+
+
+
     /**从redux中获取数据 */
     const {goodPriceInfo, highScoreInfo, discountInfo} = useSelector((state)=>({
         goodPriceInfo: state.home.goodPriceInfo,
@@ -24,7 +27,12 @@ const Home = () => {
     }),shallowEqual)
 
     /**数据的转换 */
+    const [name,setName] = useState("佛山")
     const tabsNames = discountInfo.dest_address?.map(item=>item.name)
+
+    const tabClickHandle = useCallback(function (index,name){
+        setName(name)
+    },[])
 
     //发起进行的网络请求
     /**派发异步的事件 */
@@ -40,8 +48,8 @@ const Home = () => {
             <div className="content">
                 <div className="discount">
                     <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle}/>
-                    <SectionTabs tabsNames={tabsNames}/>
-                    <SectionRooms roomList={discountInfo.dest_list?.["成都"]} itemWidth="33.333333%"/>
+                    <SectionTabs tabsNames={tabsNames} tabClick={tabClickHandle}/>
+                    <SectionRooms roomList={discountInfo.dest_list?.[name]} itemWidth="33.333333%"/>
                 </div>
 
                 <HomeSectionV1 infoData={goodPriceInfo}/>
