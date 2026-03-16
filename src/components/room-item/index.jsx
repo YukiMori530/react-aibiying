@@ -10,7 +10,7 @@ const RoomItem = (props)=>{
 
     return (
         <ItemWrapper
-        itemWidth={itemWidth}
+        $itemWidth={itemWidth}
         >
             <div className="inner">
                 <div className="cover">
