@@ -2,7 +2,6 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 // import { ConfigProvider,Button } from 'antd';
 
-
 import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
@@ -16,14 +15,13 @@ import { isEmptyObj } from "@/utils";
 const Home = () => {
 
     /**从redux中获取数据 */
-    const {goodPriceInfo, highScoreInfo, discountInfo} = useSelector((state)=>({
+    const {goodPriceInfo, highScoreInfo, discountInfo,recommendInfo} = useSelector((state)=>({
         goodPriceInfo: state.home.goodPriceInfo,
         highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo
+        discountInfo: state.home.discountInfo,
+        recommendInfo: state.home.recommendInfo
     }),shallowEqual)
-
-    
-
+ 
     //发起进行的网络请求
     /**派发异步的事件 */
     const dispatch=useDispatch()
@@ -37,6 +35,8 @@ const Home = () => {
             <HomeBanner/>
             <div className="content">
                 {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo}/>}  
+                {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}/>}
+                
                 {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}/>}
                 {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}/>}
             </div>     
