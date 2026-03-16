@@ -19,7 +19,6 @@ const Home = () => {
         highScoreInfo: state.home.highScoreInfo
     }),shallowEqual)
 
-    
     //发起进行的网络请求
     /**派发异步的事件 */
     const dispatch=useDispatch()
@@ -27,8 +26,6 @@ const Home = () => {
         dispatch(fetchHomeDataAction())
     },[dispatch])
 
-
-    console.log(goodPriceInfo)
 
     return (
         <HomeWrapper>
