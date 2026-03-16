@@ -5,13 +5,13 @@ import { RoomsWrapper } from "./style";
 
 const SectionRooms = (props=>{
 
-    const { roomList = [] } = props
+    const { roomList = [], itemWidth } = props
 
     return (
         <RoomsWrapper>
                     {
                         roomList?.slice(0,8)?.map(item => {
-                            return <RoomItem itemData={item} key={item.id}/>
+                            return <RoomItem itemData={item} key={item.id} itemWidth={itemWidth}/>
                         })
                     }
         </RoomsWrapper>
@@ -19,7 +19,8 @@ const SectionRooms = (props=>{
 })
 
 SectionRooms.propTypes = {
-    roomList: PropTypes.array
+    roomList: PropTypes.array,
+    itemWidth: PropTypes.string
 }
 
 export default SectionRooms
