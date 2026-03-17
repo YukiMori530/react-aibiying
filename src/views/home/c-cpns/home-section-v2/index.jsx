@@ -6,6 +6,7 @@ import { SectionV2Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import SectionTabs from "@/components/section-tabs";
 import SectionRooms from "@/components/section-rooms";
+import SectionFooter from "@/components/section-footer";
 const HomeSectionV2 = (props)=>{
     /**从props获取数据 */
     const { infoData } = props
@@ -25,6 +26,7 @@ const HomeSectionV2 = (props)=>{
             <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
             <SectionTabs tabsNames={tabsNames} tabClick={tabClickHandle}/>
             <SectionRooms roomList={infoData.dest_list?.[name]} itemWidth="33.333333%"/>
+            <SectionFooter name={name}/>
         </SectionV2Wrapper>
     )
 }
