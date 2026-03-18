@@ -3,6 +3,7 @@ import { TabsWrapper } from "./style";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import classNames from "classnames";
+import ScrollView from "@/base-ui/scroll-view";
 
 const SectionTabs = (props)=>{
 
@@ -16,6 +17,7 @@ const SectionTabs = (props)=>{
 
     return (
         <TabsWrapper>
+            <ScrollView>
             {
                 tabsNames.map((item,index)=>{
                     return (
@@ -29,6 +31,7 @@ const SectionTabs = (props)=>{
                     )
                 })
             }
+            </ScrollView>
         </TabsWrapper>
     )
 }
