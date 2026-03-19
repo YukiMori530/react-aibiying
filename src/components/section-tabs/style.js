@@ -15,6 +15,10 @@ export const TabsWrapper = styled.div`
         white-space: nowrap;
         cursor: pointer;
         ${props=>props.theme.mixin.boxShadow}
+
+        &:last-child {
+            margin-right: 0;
+        }
         &.active{
             color: #fff;
             background-color: ${props=>props.theme.color.secondaryColor};
