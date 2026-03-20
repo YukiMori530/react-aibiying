@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ScrollViewWrapper } from "./style";
 import PropTypes from "prop-types";
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
 
 const ScrollView = (props)=>{
     /**定义内部的状态 */
+    const [showLeft,setShowLeft] =useState(false)
     const [showRight,setShowRight] = useState(false)
     const [posIndex,setPosIndex] = useState(0)
     const totalDistanceRef = useRef()
@@ -19,20 +22,32 @@ const ScrollView = (props)=>{
     },[props.children])
 
     /**事件处理函数 */
-    function rightClickHandle(){
-        const newIndex = posIndex + 1
+
+    function controlClickHandle(isRight){
+        const newIndex = isRight ? posIndex + 1 : posIndex - 1
         const newEl=scrollContentRef.current.children[newIndex]
         scrollContentRef.current.style.transform = `translate(-${newEl.offsetLeft}px)`
         setPosIndex(newIndex)
         setShowRight(totalDistanceRef.current > newEl.offsetLeft)//如果可以滚动的距离大于当前元素的偏移量，则显示右侧的按钮
+        setShowLeft(newEl.offsetLeft>0)
     }
 
     return (
         <ScrollViewWrapper>
-            <button>左边按钮</button>
-            {showRight && <button onClick={rightClickHandle}>右边按钮</button>}
-            <div className="scroll-content" ref={scrollContentRef}>
-                {props.children}
+            {showLeft && (
+                <div className="control left" onClick={e=>controlClickHandle(false)}>
+                    <IconArrowLeft/>
+                </div>
+            )}
+            {showRight && (
+                <div className="control right" onClick={e=>controlClickHandle(true)}>
+                    <IconArrowRight/>
+                </div>
+            )}
+            <div className='scroll'>
+                <div className="scroll-content" ref={scrollContentRef}>
+                    {props.children}
+                </div>
             </div>
         </ScrollViewWrapper>
     )
