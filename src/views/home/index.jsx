@@ -8,6 +8,7 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import { isEmptyObj } from "@/utils";
+import HomeLongfor from "./c-cpns/home-longfor";
 // const customTheme = {
 //     token: { colorPrimary: '#1DA57A' },
 // };
@@ -15,11 +16,12 @@ import { isEmptyObj } from "@/utils";
 const Home = () => {
 
     /**从redux中获取数据 */
-    const {goodPriceInfo, highScoreInfo, discountInfo,recommendInfo} = useSelector((state)=>({
+    const {goodPriceInfo, highScoreInfo, discountInfo,recommendInfo,longforInfo} = useSelector((state)=>({
         goodPriceInfo: state.home.goodPriceInfo,
         highScoreInfo: state.home.highScoreInfo,
         discountInfo: state.home.discountInfo,
-        recommendInfo: state.home.recommendInfo
+        recommendInfo: state.home.recommendInfo,
+        longforInfo: state.home.longforInfo
     }),shallowEqual)
  
     //发起进行的网络请求
@@ -36,7 +38,7 @@ const Home = () => {
             <div className="content">
                 {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo}/>}  
                 {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}/>}
-                
+                {isEmptyObj(longforInfo) && <HomeLongfor infoData={longforInfo}/>}
                 {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}/>}
                 {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}/>}
             </div>     
