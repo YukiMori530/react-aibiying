@@ -4,8 +4,13 @@ import { SectionV3Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import RoomItem from "@/components/room-item";
 import ScrollView from "@/base-ui/scroll-view"
+import SectionFooter from "@/components/section-footer";
 const HomeSectionV3 = (props)=>{
     const {infoData} = props
+
+    function footerClickHandle(){
+        console.log("footerClickHandle")
+    }
     return (
         <SectionV3Wrapper>
             <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
@@ -18,6 +23,8 @@ const HomeSectionV3 = (props)=>{
                 }
                 </ScrollView>
             </div>
+
+            <SectionFooter name="plus" onFooterClick={footerClickHandle}/>
         </SectionV3Wrapper>
     )
 }
