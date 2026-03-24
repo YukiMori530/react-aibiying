@@ -1,11 +1,14 @@
 import React from 'react';
 import { EntireWrapper } from './style';
+import EntireFilter from './c-cpns/entire-filter';
+import EntireRooms from './c-cpns/entire-rooms';
+import EntirePagination from './c-cpns/entire-pagination';
 const Entire = () => {
     return (
         <EntireWrapper>
-            <div className="filter">filter</div>
-            <div className="room-list">room-list</div>
-            <div className="pagination">pagination</div>
+            <EntireFilter/>
+            <EntireRooms/>
+            <EntirePagination/>
         </EntireWrapper>
     );
 };
