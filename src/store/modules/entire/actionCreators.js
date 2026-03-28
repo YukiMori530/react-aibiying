@@ -16,11 +16,13 @@ export const changeTotalCountAction = (totalCount) => ({
     totalCount
 });
 
-export const fetchRoomListAction = ()=>{
+export const fetchRoomListAction = (page=0)=>{
+
+    
     //新的函数
-    return async (dispatch,getState)=>{
-        const currentPage=getState().entire.currentPage
-        const res=await getEntireRoomList(currentPage*20,20)
+    return async (dispatch)=>{
+        dispatch(changeCurrentPageAction(page))
+        const res=await getEntireRoomList(page*20,20)
         const roomList=res.list
         const totalCount=res.totalCount
         dispatch(changeRoomListAction(roomList))  

@@ -1,7 +1,8 @@
 import React from "react";
 import { PaginationWrapper } from "./style";
 import Pagination from '@mui/material/Pagination';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {  fetchRoomListAction } from "@/store/modules/entire/actionCreators";
 
 const EntirePagination = () => {
 
@@ -15,12 +16,19 @@ const EntirePagination = () => {
     const startCount = currentPage * 20 + 1
     const endCount = (currentPage + 1) * 20
 
+    /**事件处理函数 */
+    const dispatch = useDispatch()
+    function pageChangeHandle(event, pageCount) {
+        
+        dispatch(fetchRoomListAction(pageCount-1))
+    }    
+
     return (
         <PaginationWrapper>
             {
                 !!roomList.length && (
                     <div className="info">
-                    <Pagination count={totalPage}/>
+                    <Pagination count={totalPage} onChange={pageChangeHandle}/>
                      <div className="desc">
                          第 {startCount} - {endCount} 个房源, 共超过 {totalCount} 个
                     </div>
