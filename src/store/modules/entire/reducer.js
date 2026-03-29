@@ -5,6 +5,7 @@ const initialState = {
     roomList: [],
     totalCount: 0,
 
+    isLoading: false,
 
 };
 function reducer(state = initialState, action) {
@@ -15,6 +16,8 @@ function reducer(state = initialState, action) {
             return {...state, roomList: action.roomList};
         case actionTypes.CHANGE_TOTAL_COUNT:
             return {...state, totalCount: action.totalCount};
+        case actionTypes.CHANGE_IS_LOADING:
+            return {...state, isLoading: action.isLoading};
         default:
             return state;
     }
