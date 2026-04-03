@@ -39,31 +39,60 @@ export const ItemWrapper = styled.div`
         }
 
         .control {
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        right: 0;
-        top: 0;
-        display: none;
-        justify-content: space-between;
-        bottom: 0;
-        color: #fff;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            top: 0;
+            display: none;
+            justify-content: space-between;
+            bottom: 0;
+            color: #fff;
 
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 83px;
-            height: 100%;
-            background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+            .btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 83px;
+                height: 100%;
+                background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
 
                 &.right {
                     background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
                 }
             }
         }
-    }
 
+        .indicator {
+            position: absolute;
+            width:30%;
+            z-index: 9;
+            bottom: 10px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 14.29%;
+
+            .dot {
+                width: 6px;
+                height: 6px;
+                background-color: #fff;
+                border-radius: 50%;
+
+                &.active {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ff385c;
+               }
+            }
+        }
+    }
+}
 
     .desc{
         margin: 10px 0 5px;

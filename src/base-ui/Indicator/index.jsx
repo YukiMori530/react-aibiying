@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 const Indicator = (props)=>{
 
-    const { selectIndex } = props
+    const { selectIndex=0 } = props
     const contentRef = useRef()
 
     useEffect(()=>{
