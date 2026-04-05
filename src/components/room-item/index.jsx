@@ -8,8 +8,7 @@ import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import Indicator from "@/base-ui/Indicator";
 import classNames from "classnames";
 const RoomItem = (props)=>{
-
-    const { itemData ,itemWidth = "25%" } = props
+    const { itemData ,itemWidth = "25%", itemClick } = props
 
     const [selectIndex, setSelectIndex] = useState(0)
 
@@ -22,6 +21,10 @@ const RoomItem = (props)=>{
         if(newIndex < 0) newIndex = length - 1
         if(newIndex > length - 1) newIndex = 0
         setSelectIndex(newIndex)
+    }
+
+    function itemClickHandle(){
+        if(itemClick) itemClick(itemData)
     }
 
     const pictureElement = (
@@ -71,6 +74,7 @@ const RoomItem = (props)=>{
     return (
         <ItemWrapper
         $itemWidth={itemWidth}
+        onClick={e=>itemClickHandle()}
         >
             <div className="inner">
                 { !itemData.picture_urls ? pictureElement : sliderElement }
