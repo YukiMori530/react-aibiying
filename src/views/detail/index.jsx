@@ -1,12 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { shallowEqual } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { shallowEqual } from 'react-redux';
+import { DetailWrapper } from './style';
+import DetailPictures from './c-cpns/detail-pictures';
+import DetailInfos from './c-cpns/detail-infos';
 const Detail = () => {
-    const { detailInfo } = useSelector((state) => ({
-        detailInfo: state.detail.detailInfo
-    }),shallowEqual)
+    // const { detailInfo } = useSelector((state) => ({
+    //     detailInfo: state.detail.detailInfo
+    // }),shallowEqual)
     return (
-        <div>{detailInfo.name}</div>
+        <DetailWrapper>
+            <DetailPictures/>
+            <DetailInfos/>
+        </DetailWrapper>
     );
 };
 
