@@ -16,7 +16,7 @@ const DetailPictures = () => {
     return <PicturesWrapper>
         <div className='pictures'>
             <div className="left">
-                <div className='item'>
+                <div className='item' onClick={e=>setShowBrowser(true)}>
                     <img src={detailInfo?.picture_urls?.[0]} alt="" />
                     <div className="cover"></div>
                 </div>
@@ -25,7 +25,7 @@ const DetailPictures = () => {
                 {
                     detailInfo?.picture_urls?.slice(1,5).map(item => {
                         return (
-                            <div className='item'>
+                            <div className='item' onClick={e=>setShowBrowser(true)}>
                                 <img src={item} alt="" />
                                 <div className="cover"></div>
                             </div>
@@ -36,7 +36,13 @@ const DetailPictures = () => {
         </div>
             
         <div className='show-btn' onClick={e=>setShowBrowser(true)}>显示图片</div>
-        {showBrowser && <PictureBrowser/>}
+        {showBrowser && (
+            <PictureBrowser 
+                pictureUrls={detailInfo?.picture_urls} 
+                closeClick={e=>setShowBrowser(false)}
+            />
+        )
+        }
     </PicturesWrapper>
 }
 
