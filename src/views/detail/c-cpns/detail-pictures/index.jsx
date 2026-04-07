@@ -2,7 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { shallowEqual } from 'react-redux';
 import { PicturesWrapper } from './style';
+import PictureBrowser from '@/base-ui/picture-browser';
+import { useState } from 'react';
 const DetailPictures = () => {
+
+
+    const [showBrowser, setShowBrowser] = useState(false)
 
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
@@ -30,6 +35,8 @@ const DetailPictures = () => {
             </div>
         </div>
             
+        <div className='show-btn' onClick={e=>setShowBrowser(true)}>显示图片</div>
+        {showBrowser && <PictureBrowser/>}
     </PicturesWrapper>
 }
 
