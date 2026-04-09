@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserWrapper } from "./style";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+
 import IconClose from "@/assets/svg/icon-close";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
@@ -9,6 +10,8 @@ const PictureBrowser = (props) => {
 
     const { pictureUrls, closeClick } = props
     const [currentIndex,setCurrentIndex]=useState(0)
+    const [isNext,setIsNext]=useState(true)
+    const imgRef = useRef(null)
 
     //当图片浏览器展示出来时，滚动的功能消失
     useEffect(()=>{
@@ -22,15 +25,16 @@ const PictureBrowser = (props) => {
         if(closeClick) closeClick()
     }
 
-    function controlClickHandle(isNext){
+    function controlClickHandle(isNext=true){
         let newIndex=isNext?currentIndex+1:currentIndex-1
         if(newIndex<0) newIndex=pictureUrls.length-1
         if(newIndex>=pictureUrls.length) newIndex=0
         setCurrentIndex(newIndex)
+        setIsNext(isNext)
     }
 
     return (
-        <BrowserWrapper>
+        <BrowserWrapper isNext={isNext}>
             <div className="top">
                 <div className="close-btn" onClick={closeClickHandle}>
                     <IconClose />
@@ -46,7 +50,16 @@ const PictureBrowser = (props) => {
                     </div>
                 </div>
                 <div className="picture">
-                    <img src={pictureUrls[currentIndex]} alt="" />
+                    <SwitchTransition mode="out-in">
+                        <CSSTransition
+                            nodeRef={imgRef}
+                            key={pictureUrls[currentIndex]}
+                            classNames="pic"
+                            timeout={200}
+                        >
+                            <img ref={imgRef} src={pictureUrls[currentIndex]} alt="" />
+                        </CSSTransition>
+                    </SwitchTransition>
                 </div>
             </div>
             <div className="preview">

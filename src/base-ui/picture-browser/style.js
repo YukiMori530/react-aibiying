@@ -13,23 +13,24 @@ export const BrowserWrapper = styled.div`
     background-color: #333;
 
     .top {
-    position: relative;
-    height: 86px;
+      position: relative;
+      z-index: 2;
+      height: 86px;
 
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      cursor: pointer;
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        cursor: pointer;
+      }
     }
-  }
 
-  .slider{
+  .slider {
+    position: relative;
     display: flex;
     flex: 1;
     justify-content: center;
 
-    
     .control {
       position: absolute;
       z-index: 1;
@@ -69,11 +70,32 @@ export const BrowserWrapper = styled.div`
         height: 100%;
         user-select: none;
       }
+
+    .pic-enter {
+      transform: translateX(${props => (props.isNext ? "100%" : "-100%")});
+      opacity: 0;
     }
 
-  .preview{
+    .pic-enter-active {
+      transform: translateX(0);
+      opacity: 1;
+      transition: transform 200ms ease;
+    }
+
+    .pic-exit {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .pic-exit-active {
+      transform: translateX(${props => (props.isNext ? "-100%" : "100%")});
+      opacity: 0;
+      transition: transform 200ms ease;
+    }
+  }
+
+  .preview {
     height: 100px;
     margin-top: 10px;
   }
-
 `

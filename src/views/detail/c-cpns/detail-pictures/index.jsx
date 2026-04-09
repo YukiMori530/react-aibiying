@@ -7,7 +7,7 @@ import { useState } from 'react';
 const DetailPictures = () => {
 
 
-    const [showBrowser, setShowBrowser] = useState(false)
+    const [showBrowser, setShowBrowser] = useState(true)
 
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
