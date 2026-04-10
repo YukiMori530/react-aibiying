@@ -95,7 +95,57 @@ export const BrowserWrapper = styled.div`
   }
 
   .preview {
+    position: relative;
+    display: flex;
+    justify-content: center;
     height: 100px;
     margin-top: 10px;
+
+    .info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      max-width: 105vh;
+      margin: 0 auto;
+      color: #fff;
+
+      .desc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .toggle {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          user-select: none;
+        }
+      }
+
+      .list {
+        margin-top: 3px;
+        overflow: hidden;
+        transition: height 300ms ease;
+        height: ${props => (props.showList ? "67px" : "0")};
+
+        .item {
+          margin-right: 15px;
+          cursor: pointer;
+
+          img {
+            height: 67px;
+            opacity: 0.5;
+          }
+
+          &.active {
+            img {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
   }
-`
+`;

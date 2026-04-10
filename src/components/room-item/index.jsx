@@ -36,10 +36,22 @@ const RoomItem = (props)=>{
     const sliderElement = (
         <div className="slider">
         <div className="control">
-            <div className="btn left" onClick={e=>controlClickHandle(false)}>
+            <div
+                className="btn left"
+                onClick={e => {
+                    e.stopPropagation()
+                    controlClickHandle(false)
+                }}
+            >
                 <IconArrowLeft width="30" height="30"/>
             </div>
-            <div className="btn right" onClick={e=>controlClickHandle(true)}>
+            <div
+                className="btn right"
+                onClick={e => {
+                    e.stopPropagation()
+                    controlClickHandle(true)
+                }}
+            >
                 <IconArrowRight width="30" height="30"/>
             </div>
         </div>
