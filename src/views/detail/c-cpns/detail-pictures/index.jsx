@@ -7,7 +7,8 @@ import { useState } from 'react';
 const DetailPictures = () => {
 
 
-    const [showBrowser, setShowBrowser] = useState(true)
+    const [showBrowser, setShowBrowser] = useState(false)
+    const [browserStartIndex, setBrowserStartIndex] = useState(0)
 
     const { detailInfo } = useSelector((state) => ({
         detailInfo: state.detail.detailInfo
@@ -16,16 +17,30 @@ const DetailPictures = () => {
     return <PicturesWrapper>
         <div className='pictures'>
             <div className="left">
-                <div className='item' onClick={e=>setShowBrowser(true)}>
+                <div
+                    className='item'
+                    onClick={() => {
+                        setBrowserStartIndex(0)
+                        setShowBrowser(true)
+                    }}
+                >
                     <img src={detailInfo?.picture_urls?.[0]} alt="" />
                     <div className="cover"></div>
                 </div>
             </div>
             <div className='right'>
                 {
-                    detailInfo?.picture_urls?.slice(1,5).map(item => {
+                    detailInfo?.picture_urls?.slice(1, 5).map((item, i) => {
+                        const indexInFullList = i + 1
                         return (
-                            <div className='item' onClick={e=>setShowBrowser(true)}>
+                            <div
+                                className='item'
+                                key={item}
+                                onClick={() => {
+                                    setBrowserStartIndex(indexInFullList)
+                                    setShowBrowser(true)
+                                }}
+                            >
                                 <img src={item} alt="" />
                                 <div className="cover"></div>
                             </div>
@@ -35,11 +50,21 @@ const DetailPictures = () => {
             </div>
         </div>
             
-        <div className='show-btn' onClick={e=>setShowBrowser(true)}>显示图片</div>
+        <div
+            className='show-btn'
+            onClick={() => {
+                setBrowserStartIndex(0)
+                setShowBrowser(true)
+            }}
+        >
+            显示图片
+        </div>
         {showBrowser && (
-            <PictureBrowser 
-                pictureUrls={detailInfo?.picture_urls} 
-                closeClick={e=>setShowBrowser(false)}
+            <PictureBrowser
+                key={browserStartIndex}
+                pictureUrls={detailInfo?.picture_urls}
+                initialIndex={browserStartIndex}
+                closeClick={() => setShowBrowser(false)}
             />
         )
         }

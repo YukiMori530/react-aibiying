@@ -10,10 +10,17 @@ import IconTriangleArrowBottom from "@/assets/svg/icon-triangle-arrow-bottom";
 import IconTriangleArrowTop from "@/assets/svg/icon-triangle-arrow-top";
 import Indicator from "@/base-ui/Indicator";
 import classNames from "classnames";
+function clampIndex(index, length) {
+    if (!length) return 0
+    return Math.max(0, Math.min(index, length - 1))
+}
+
 const PictureBrowser = (props) => {
 
-    const { pictureUrls, closeClick } = props
-    const [currentIndex,setCurrentIndex]=useState(0)
+    const { pictureUrls, closeClick, initialIndex = 0 } = props
+    const [currentIndex, setCurrentIndex] = useState(() =>
+        clampIndex(initialIndex, pictureUrls?.length ?? 0)
+    )
     const [isNext,setIsNext]=useState(true)
     const [showList, setShowList] = useState(true)
     const imgRef = useRef(null)
@@ -110,7 +117,8 @@ const PictureBrowser = (props) => {
 }
 
 PictureBrowser.propTypes = {
-    pictureUrls: PropTypes.array
+    pictureUrls: PropTypes.array,
+    initialIndex: PropTypes.number,
 }
 
 export default PictureBrowser
