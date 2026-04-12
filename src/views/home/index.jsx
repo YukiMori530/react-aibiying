@@ -10,6 +10,7 @@ import HomeSectionV2 from "./c-cpns/home-section-v2";
 import { isEmptyObj } from "@/utils";
 import HomeLongfor from "./c-cpns/home-longfor";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 // const customTheme = {
 //     token: { colorPrimary: '#1DA57A' },
 // };
@@ -31,6 +32,7 @@ const Home = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
         dispatch(fetchHomeDataAction())
+        dispatch(changeHeaderConfigAction({ isFixed:true }))
     },[dispatch])
 
 

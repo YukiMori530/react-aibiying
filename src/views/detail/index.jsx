@@ -4,10 +4,16 @@ import React from 'react';
 import { DetailWrapper } from './style';
 import DetailPictures from './c-cpns/detail-pictures';
 import DetailInfos from './c-cpns/detail-infos';
+import { changeHeaderConfigAction } from '@/store/modules/main';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 const Detail = () => {
-    // const { detailInfo } = useSelector((state) => ({
-    //     detailInfo: state.detail.detailInfo
-    // }),shallowEqual)
+
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        dispatch(changeHeaderConfigAction({ isFixed:false }))
+    },[dispatch])
+
     return (
         <DetailWrapper>
             <DetailPictures/>
