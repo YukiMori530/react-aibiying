@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react';
-import { useLocation, useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import routes from '@/router';
 
+import useScrollTop from '@/hooks/useScrollTop';
 import AppHeader from './components/app-header'
 import AppFooter from './components/app-footer';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
-
 function App() {
+
+  useScrollTop();
   return (
     <div className='app'>
-      <ScrollToTop />
       <AppHeader/>
       <div className='page'>
         {useRoutes(routes)}
