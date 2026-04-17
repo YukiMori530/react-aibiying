@@ -13,6 +13,7 @@ export const RightWrapper = styled.div`
     .btns {
         display: flex;
         align-items: center;
+        color: ${props=>props.theme.isAlpha ? "#fff": props.theme.text.primaryColor};
 
         .btn{
             height: 18px;

@@ -11,7 +11,7 @@ const Entire = () => {
     //发送网络请求，获取数据，并且保存当前的页面等待
     useEffect(()=>{
         dispatch(fetchRoomListAction())
-        dispatch(changeHeaderConfigAction({ isFixed:true }))
+        dispatch(changeHeaderConfigAction({ isFixed:true,topAlpha:false }))
     },[dispatch])
 
     return (
